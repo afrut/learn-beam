@@ -20,4 +20,3 @@ if __name__ == "__main__":
             | "Upper-case first letter" >> beam.Map(cap)
             | "Print" >> beam.Map(print)
         )
-        print(type(ret))
