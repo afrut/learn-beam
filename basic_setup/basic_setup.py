@@ -1,6 +1,8 @@
 """
-    Run the pipeline with
-        python basic_setup.py --setup_file="setup.py"
+    Run the pipeline REMOTELY with either of the following:
+        python basic_setup.py --requirements_file requirements.txt
+        python basic_setup.py --setup_file setup.py
+    If running locally, packages must be installed first.
 """
 import logging
 import apache_beam as beam
@@ -11,8 +13,9 @@ if __name__ == "__main__":
     logging.basicConfig(level = logging.INFO)
     beam_options = PipelineOptions()
     opts = beam_options.get_all_options()
+    logging.info(opts["requirements_file"])
     logging.info(opts["setup_file"])
-    with beam.Pipeline() as pipeline:
+    with beam.Pipeline(options = beam_options) as pipeline:
         ret = (
             pipeline
             # Create a PCollection
