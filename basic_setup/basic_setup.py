@@ -1,5 +1,6 @@
 """
-    Run the pipeline with python basic.py
+    Run the pipeline with
+        python basic_setup.py --setup_file="setup.py"
 """
 import logging
 import apache_beam as beam
