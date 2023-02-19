@@ -1,0 +1,4 @@
+Each WordCount example introduces different concepts in the Beam programming
+model. Begin by understanding MinimalWordCount, the simplest of the examples.
+Once you feel comfortable with the basic principles in building a pipeline,
+continue on to learn more concepts in the other examples.

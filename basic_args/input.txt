@@ -1,0 +1,5 @@
+The WordCount examples demonstrate how to set up a processing pipeline that can
+read text, tokenize the text lines into individual words, and perform a
+frequency count on each of those words. The Beam SDKs contain a series of these
+four successively more detailed WordCount examples that build on each other. The
+input text for all the examples is a set of Shakespeare’s texts.
