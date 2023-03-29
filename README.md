@@ -8,3 +8,9 @@ source env/bin/activate
 ```
 python some_file.py
 ```
+
+- Install dependencies
+```
+pip install apache-beam
+pip install apache-beam[gcp,kafka]
+```
