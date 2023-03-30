@@ -19,7 +19,9 @@ def run(known_args: dict, pipeline_args: dict):
         _ = data | beam.Map(logging.info)
 
 if __name__ == '__main__':
-    logging.getLogger().setLevel(logging.INFO)
+    fmt = "%(asctime)s.%(msecs)03d: %(message)s"
+    datefmt = "%Y-%m-%d %H:%M:%S"
+    logging.basicConfig(format = fmt, level = logging.INFO, datefmt = datefmt)
 
     parser = argparse.ArgumentParser()
     parser.add_argument(
