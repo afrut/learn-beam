@@ -8,14 +8,10 @@ import apache_beam as beam
 from apache_beam.options.pipeline_options import PipelineOptions
 
 def run(known_args: dict, pipeline_args: dict):
-    """
-        Main pipeline
-    """
     pipeline_options = PipelineOptions(pipeline_args)
     with beam.Pipeline(options = pipeline_options) as p:
         data = (p
-        | "Create data" >> beam.Create(["spam", "ham", "eggs", "bacon", "toast"])
-        )
+            | "Create data" >> beam.Create(["spam", "ham", "eggs", "bacon", "toast"]))
         _ = data | beam.Map(logging.info)
 
 if __name__ == '__main__':
