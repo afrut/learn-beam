@@ -1,4 +1,4 @@
-#python basics.py --DirectRunner --num_keys 20 --num_rows 600 --seconds_into_future 60
+#python basics.py --DirectRunner --num_keys 1 --num_rows 600 --seconds_into_future 60 --fixed_windows_length 20
 """
     A playarea for windowing
 """
@@ -36,7 +36,7 @@ def generate_data(keys: List[int]
         delta = datetime.timedelta(seconds = random.randint(0, seconds_into_future))
         return (now + delta).strftime("%Y-%m-%d %H:%M:%S.%f")
 
-    def generate_data(key):
+    def generate_hash(key):
         """
             Generate some data based on key and time
         """
@@ -55,7 +55,7 @@ def generate_data(keys: List[int]
                 "timestamp": generate_timestamp()
                 ,"data": {
                     "amount": random.randint(1, 100)
-                    ,"unique_string": generate_data(key)
+                    ,"unique_string": generate_hash(key)
                 }
             } 
         ))
@@ -104,7 +104,8 @@ def run(known_args: dict, pipeline_args: dict):
 
         | "Create data" >> beam.Create(
             generate_data(generate_keys(known_args.num_keys)
-                , known_args.num_rows))
+                ,known_args.num_rows
+                ,known_args.seconds_into_future ))
 
         # Timestamp each element based on data in the payload
         | "Assign timestamp" >> beam.Map(lambda x: beam.window.TimestampedValue(x
