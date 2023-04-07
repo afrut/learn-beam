@@ -1,5 +1,5 @@
 #python main.py --DirectRunner --input_file="../../txt/input.txt"
-#TODO: not working
+# NOTE: This somehow works in the cloud but not locally.
 """
     A playarea for text-based input
 """
