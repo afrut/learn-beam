@@ -9,7 +9,7 @@
 import logging
 import apache_beam as beam
 from apache_beam.options.pipeline_options import PipelineOptions
-from apache_beam.io.kafka import ReadFromKafka
+from apache_beam.io.kafka import ReadFromKafka, default_io_expansion_service
 
 def run(beam_options):
     with beam.Pipeline(options = beam_options) as pipeline:
@@ -23,7 +23,7 @@ def run(beam_options):
                 }
                 ,topics = ["test"]
                 ,with_metadata = True
-                ,expansion_service = "localhost:4000"
+                ,expansion_service = default_io_expansion_service()
             )
         | "Print" >> beam.Map(print)
         )
