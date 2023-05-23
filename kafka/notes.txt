@@ -1,0 +1,1 @@
+Expansion service JAR is cached here ~/.apache_beam/cache/jars/beam-sdks-java-io-expansion-service-2.46.0.jar
